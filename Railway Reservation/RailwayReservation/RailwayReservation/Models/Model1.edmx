@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RailwayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConfirmSeat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Journey_Date" Type="date" />
+          <Property Name="Start_Station" Type="varchar" MaxLength="50" />
+          <Property Name="End_Station" Type="varchar" MaxLength="50" />
+          <Property Name="TrainDetail" Type="int" />
+          <Property Name="TrainSchedule" Type="int" />
+          <Property Name="Seats" Type="int" />
+          <Property Name="Bill" Type="money" />
+          <Property Name="Seat_No" Type="int" />
+          <Property Name="PRN" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Journey_Date" Type="date" />
+          <Property Name="Start_Station" Type="varchar" MaxLength="50" />
+          <Property Name="End_Station" Type="varchar" MaxLength="50" />
+          <Property Name="TrainDetail" Type="int" />
+          <Property Name="TrainSchedule" Type="int" />
+          <Property Name="Seats" Type="int" />
+          <Property Name="Bill" Type="money" />
+        </EntityType>
+        <EntityType Name="stamaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="DivisionName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrainDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="RouteId" Type="varchar" MaxLength="50" />
+          <Property Name="No_of_compartment" Type="int" />
+          <Property Name="1AC" Type="int" />
+          <Property Name="2AC" Type="int" />
+          <Property Name="3AC" Type="int" />
+          <Property Name="Sleeper" Type="int" />
+          <Property Name="General" Type="int" />
+          <Property Name="Day" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrainSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start_Station" Type="varchar" MaxLength="50" />
+          <Property Name="Destination_Station" Type="varchar" MaxLength="50" />
+          <Property Name="Arrival_Time" Type="time" Precision="7" />
+          <Property Name="Departure_Time" Type="time" Precision="7" />
+          <Property Name="Distance_Between" Type="varchar" MaxLength="50" />
+          <Property Name="Train_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Reservati__Train__5CD6CB2B">
+          <End Role="TrainDetail" Type="Self.TrainDetail" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TrainDetail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Train__5DCAEF64">
+          <End Role="TrainSchedule" Type="Self.TrainSchedule" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainSchedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TrainSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrainSche__Train__29572725">
+          <End Role="TrainDetail" Type="Self.TrainDetail" Multiplicity="0..1" />
+          <End Role="TrainSchedule" Type="Self.TrainSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainSchedule">
+              <PropertyRef Name="Train_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RailwayModelStoreContainer">
+          <EntitySet Name="ConfirmSeat" EntityType="Self.ConfirmSeat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stamaster" EntityType="Self.stamaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainDetail" EntityType="Self.TrainDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainSchedule" EntityType="Self.TrainSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Reservati__Train__5CD6CB2B" Association="Self.FK__Reservati__Train__5CD6CB2B">
+            <End Role="TrainDetail" EntitySet="TrainDetail" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Train__5DCAEF64" Association="Self.FK__Reservati__Train__5DCAEF64">
+            <End Role="TrainSchedule" EntitySet="TrainSchedule" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrainSche__Train__29572725" Association="Self.FK__TrainSche__Train__29572725">
+            <End Role="TrainDetail" EntitySet="TrainDetail" />
+            <End Role="TrainSchedule" EntitySet="TrainSchedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RailwayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="stamaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DivisionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TrainDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RouteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="No_of_compartment" Type="Int32" />
+          <Property Name="C1AC" Type="Int32" />
+          <Property Name="C2AC" Type="Int32" />
+          <Property Name="C3AC" Type="Int32" />
+          <Property Name="Sleeper" Type="Int32" />
+          <Property Name="General" Type="Int32" />
+          <NavigationProperty Name="TrainSchedule" Relationship="Self.FK__TrainSche__Train__29572725" FromRole="TrainDetail" ToRole="TrainSchedule" />
+          <NavigationProperty Name="Reservation" Relationship="RailwayModel.FK__Reservati__Train__47DBAE45" FromRole="TrainDetail" ToRole="Reservation" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TrainSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Destination_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Arrival_Time" Type="Time" Precision="7" />
+          <Property Name="Departure_Time" Type="Time" Precision="7" />
+          <Property Name="Distance_Between" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Train_Id" Type="Int32" />
+          <NavigationProperty Name="TrainDetail" Relationship="Self.FK__TrainSche__Train__29572725" FromRole="TrainSchedule" ToRole="TrainDetail" />
+          <NavigationProperty Name="Reservation" Relationship="RailwayModel.FK__Reservati__Train__48CFD27E" FromRole="TrainSchedule" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__TrainSche__Train__29572725">
+          <End Role="TrainDetail" Type="Self.TrainDetail" Multiplicity="0..1" />
+          <End Role="TrainSchedule" Type="Self.TrainSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainSchedule">
+              <PropertyRef Name="Train_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RailwayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="stamaster" EntityType="Self.stamaster" />
+          <EntitySet Name="TrainDetail" EntityType="Self.TrainDetail" />
+          <EntitySet Name="TrainSchedule" EntityType="Self.TrainSchedule" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK__TrainSche__Train__29572725" Association="Self.FK__TrainSche__Train__29572725">
+            <End Role="TrainDetail" EntitySet="TrainDetail" />
+            <End Role="TrainSchedule" EntitySet="TrainSchedule" />
+          </AssociationSet>
+          <EntitySet Name="Reservation" EntityType="RailwayModel.Reservation" />
+          <AssociationSet Name="FK__Reservati__Train__47DBAE45" Association="RailwayModel.FK__Reservati__Train__47DBAE45">
+            <End Role="TrainDetail" EntitySet="TrainDetail" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Train__48CFD27E" Association="RailwayModel.FK__Reservati__Train__48CFD27E">
+            <End Role="TrainSchedule" EntitySet="TrainSchedule" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <EntitySet Name="Contact" EntityType="RailwayModel.Contact" />
+          <EntitySet Name="ConfirmSeat" EntityType="RailwayModel.ConfirmSeat" />
+        </EntityContainer>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Journey_Date" Type="DateTime" Precision="0" />
+          <Property Name="Start_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="End_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrainDetail" Type="Int32" />
+          <Property Name="TrainSchedule" Type="Int32" />
+          <Property Name="Seats" Type="Int32" />
+          <Property Name="Bill" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="TrainDetail1" Relationship="RailwayModel.FK__Reservati__Train__47DBAE45" FromRole="Reservation" ToRole="TrainDetail" />
+          <NavigationProperty Name="TrainSchedule1" Relationship="RailwayModel.FK__Reservati__Train__48CFD27E" FromRole="Reservation" ToRole="TrainSchedule" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Reservati__Train__47DBAE45">
+          <End Type="RailwayModel.TrainDetail" Role="TrainDetail" Multiplicity="0..1" />
+          <End Type="RailwayModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TrainDetail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Train__48CFD27E">
+          <End Type="RailwayModel.TrainSchedule" Role="TrainSchedule" Multiplicity="0..1" />
+          <End Type="RailwayModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainSchedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TrainSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ConfirmSeat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Journey_Date" Type="DateTime" Precision="0" />
+          <Property Name="Start_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="End_Station" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrainDetail" Type="Int32" />
+          <Property Name="TrainSchedule" Type="Int32" />
+          <Property Name="Seats" Type="Int32" />
+          <Property Name="Bill" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Seat_No" Type="Int32" />
+          <Property Name="PRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RailwayModelStoreContainer" CdmEntityContainer="RailwayEntities">
+          <EntitySetMapping Name="stamaster">
+            <EntityTypeMapping TypeName="RailwayModel.stamaster">
+              <MappingFragment StoreEntitySet="stamaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainDetail">
+            <EntityTypeMapping TypeName="RailwayModel.TrainDetail">
+              <MappingFragment StoreEntitySet="TrainDetail">
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TrainName" ColumnName="TrainName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="No_of_compartment" ColumnName="No_of_compartment" />
+                <ScalarProperty Name="C1AC" ColumnName="1AC" />
+                <ScalarProperty Name="C2AC" ColumnName="2AC" />
+                <ScalarProperty Name="C3AC" ColumnName="3AC" />
+                <ScalarProperty Name="Sleeper" ColumnName="Sleeper" />
+                <ScalarProperty Name="General" ColumnName="General" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainSchedule">
+            <EntityTypeMapping TypeName="RailwayModel.TrainSchedule">
+              <MappingFragment StoreEntitySet="TrainSchedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Start_Station" ColumnName="Start_Station" />
+                <ScalarProperty Name="Destination_Station" ColumnName="Destination_Station" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+                <ScalarProperty Name="Distance_Between" ColumnName="Distance_Between" />
+                <ScalarProperty Name="Train_Id" ColumnName="Train_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="RailwayModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="RailwayModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="TrainSchedule" ColumnName="TrainSchedule" />
+                <ScalarProperty Name="TrainDetail" ColumnName="TrainDetail" />
+                <ScalarProperty Name="End_Station" ColumnName="End_Station" />
+                <ScalarProperty Name="Start_Station" ColumnName="Start_Station" />
+                <ScalarProperty Name="Journey_Date" ColumnName="Journey_Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="RailwayModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfirmSeat">
+            <EntityTypeMapping TypeName="RailwayModel.ConfirmSeat">
+              <MappingFragment StoreEntitySet="ConfirmSeat">
+                <ScalarProperty Name="PRN" ColumnName="PRN" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="TrainSchedule" ColumnName="TrainSchedule" />
+                <ScalarProperty Name="TrainDetail" ColumnName="TrainDetail" />
+                <ScalarProperty Name="End_Station" ColumnName="End_Station" />
+                <ScalarProperty Name="Start_Station" ColumnName="Start_Station" />
+                <ScalarProperty Name="Journey_Date" ColumnName="Journey_Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

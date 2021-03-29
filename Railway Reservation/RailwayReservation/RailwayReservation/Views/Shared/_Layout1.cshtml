@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Delicious Bootstrap Template - Index</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Delicious/assets/img/favicon.png" rel="icon">
+    <link href="~/Delicious/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Delicious/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Delicious/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ======= Top Bar ======= -->
+    <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
+        <div class="container text-right">
+            <i class="icofont-phone"></i> +1 5589 55488 55
+            <i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sat: 11:00 AM - 23:00 PM
+        </div>
+    </section>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex align-items-center">
+
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="index.html"><span>Railway</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                   
+                    <li class="book-a-table text-center">
+                        @Html.ActionLink("Login", "Login", "User", null, new { @class = "nav-link" })
+                    </li>
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+                <div class="carousel-inner" role="listbox">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active" style="background:url('../Delicious/assets/img/train.jpg');">
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="animate__animated animate__fadeInDown"><span>Railway</span> Reservation</h2>
+                                <p class="animate__animated animate__fadeInUp">Pakistan Railways forms the life line of the country by catering to its needs for large scale movement of freight as well as passenger traffic. It not only contributes to its economic growth but also promotes national integration.</p>
+                                <div>
+                                    @Html.ActionLink("Book a ticket", "Login", "User", null, new { @class = "btn-book animate__animated animate__fadeInUp scrollto" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item" style="background: url('../Delicious/assets/img/train1.jpg');">
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="animate__animated animate__fadeInDown"><span>Railway</span> Reservation</h2>
+                                <p class="animate__animated animate__fadeInUp">Pakistan Railways endeavours to run the trains strictly in accordance to time table. The progressive freight train support organization operated by professional management and competent staff endeavours to provide reliable, competitive and economical service of recognized standards to its customers.</p>
+                                <div>
+                                    @Html.ActionLink("Book a ticket", "Login", "User", null, new { @class = "btn-book animate__animated animate__fadeInUp scrollto" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item" style="background: url('../Delicious/assets/img/train12.jpg');">
+                        <div class="carousel-background"><img src="assets/img/train12.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="animate__animated animate__fadeInDown"><span>Railway</span> Reservation</h2>
+                                <p class="animate__animated animate__fadeInUp">Pakistan Railways provides an important mode of Transportation in the farthest corners of the country and brings them closer for Business, sightseeing, pilgrimage and education. It has been a great integrating force and forms the life line of the country by catering to its needs for large scale movement of people and freight.</p>
+                                <div>
+                                    @Html.ActionLink("Book a ticket", "Login", "User", null, new { @class = "btn-book animate__animated animate__fadeInUp scrollto" })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-5 " style="background-image: url('../Delicious/assets/img/train20.jpg');">
+
+                    </div>
+
+                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
+
+                        <div class="content">
+                            <h3> <strong>ABOUT PAKISTAN RAILWAYS</strong></h3>
+                            <p>
+                                Pakistan Railways provide an important mode of Transportation in the farthest corners of the country and brings them closer for Business, sight seeing, pilgrimage and education. It has been a great integrating force and forms the life line of the country by catering to its needs for large scale movement of people and freight.
+                            </p>
+                            <p class="font-italic">
+                                The possibility of Karachi as a sea port was first noticed in the mid of 19th century and Sir Henry Edward Frere who was appointed Commissioner of Sindh after its annexation with Bombay in 1847 sought permission from Lord Dalhousie to begin survey of sea port. He also initiated the survey for Railway line in 1858 .
+                            </p>
+                            <p>
+                                The 4 sections i.e. Scinde Railways, Indian Flotilla Company, Punjab Railway and Delhi Railways working in a single company were later on amalgamated into Scinde, Punjab & Delhi Railways Company and was purchased by the Secretary of State for India in 1885 and in January, 1886 it was named North Western State Railways which was later on renamed as North Western Railways.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End About Section -->
+        <!-- ======= Gallery Section ======= -->
+        <section id="gallery" class="gallery testimonials">
+            <div class="container-fluid">
+                <div class="row no-gutters">
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train33.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train33.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train35.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train35.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train36.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train36.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train37.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train37.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train26.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train26.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train29.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train29.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train30.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train30.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item">
+                            <a href="~/Delicious/assets/img/gallery/train31.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="~/Delicious/assets/img/gallery/train31.jpg" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Gallery Section -->
+    </main>
+    <div class="body-content">
+        @RenderBody()
+    </div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>Online Railway Reservation</h3>
+            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; Copyright <strong><span>Online Railway Reservation</span></strong>. All Rights Reserved
+            </div>
+
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Delicious/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Delicious/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Delicious/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Delicious/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Delicious/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="~/Delicious/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Delicious/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="~/Delicious/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Delicious/assets/js/main.js"></script>
+
+</body>
+</html>

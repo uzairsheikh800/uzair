@@ -1,0 +1,81 @@
+﻿@model RailwayReservation.Models.Reservation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Cancelation</h2>
+
+<h3>Are you sure you want to Cancel Your Reservation?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Journey_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Journey_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_Station)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_Station)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_Station)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_Station)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainDetail1.TrainName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainDetail1.TrainName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainSchedule1.Start_Station)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainSchedule1.Start_Station)
+        </dd>
+
+    </dl>
+    <br />
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Cancel" class="btn btn-danger" /> 
+            @Html.ActionLink("Back to List", "Index" , null , new { @class = "btn btn-warning" })
+            
+        </div>
+        <br />
+    }
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06c8afbf481542cf861e651f2f213525" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="RailwayModel.stamaster" Width="1.5" PointX="8.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RailwayModel.TrainDetail" Width="1.5" PointX="2" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RailwayModel.TrainSchedule" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RailwayModel.User" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="RailwayModel.FK__TrainSche__Train__29572725" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RailwayModel.Reservation" Width="1.5" PointX="6.875" PointY="4" />
+        <AssociationConnector Association="RailwayModel.FK__Reservati__Train__47DBAE45" />
+        <AssociationConnector Association="RailwayModel.FK__Reservati__Train__48CFD27E" />
+        <EntityTypeShape EntityType="RailwayModel.Contact" Width="1.5" PointX="8.375" PointY="3.5" />
+        <EntityTypeShape EntityType="RailwayModel.ConfirmSeat" Width="1.5" PointX="1.5" PointY="4.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

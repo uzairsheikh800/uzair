@@ -1,0 +1,95 @@
+﻿@model IEnumerable<RailwayReservation.Models.TrainDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Train Details</h2>
+@if (Session["Role"].ToString() == "Employee")
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+
+<br />
+<table class="table">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.TrainName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RouteId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.No_of_compartment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C1AC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C2AC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C3AC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sleeper)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.General)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Day)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_of_compartment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C1AC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C2AC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C3AC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sleeper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.General)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Day)
+            </td>
+            @if (Session["Role"].ToString() == "Employee")
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            }
+        </tr>
+    }
+
+</table>

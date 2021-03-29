@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Delicious/assets/img/favicon.png" rel="icon">
+    <link href="~/Delicious/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Delicious/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/Delicious/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Template Main CSS File -->
+    <link href="~/Delicious/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
+        <div class="container text-right">
+            <i class="icofont-phone"></i> +1 5589 55488 55
+            <i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sat: 11:00 AM - 23:00 PM
+        </div>
+    </section>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center ">
+        <div class="container d-flex align-items-center">
+
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="#"><span>Railway</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!--<a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    @if (Session["name"] != null)
+                    {
+                        if (Session["Role"].ToString() == "Employee")
+                        {
+                            @Html.ActionLink("Station Master", "Index", "stamasters")
+                            @Html.ActionLink(" Train Detail", "Index", "TrainDetail")
+                            @Html.ActionLink("  Train Schedule", "Index", "TrainSchedule")
+                        }
+
+                        else if (Session["Role"].ToString() == "Customer")
+                        {
+                            @Html.ActionLink("Train Detail", "Index", "TrainDetail")
+                            @Html.ActionLink("  Day Wise", "DayWiseTrain", "TrainDetail")
+                            @Html.ActionLink("  Train Schedule", "Index", "TrainSchedule")
+                            @Html.ActionLink("  Reservation", "Create", "Reservation")
+
+                        }
+                        else if (Session["Role"].ToString() == "Admin")
+                        {
+                            @Html.ActionLink("Train Detail", "Index", "TrainDetail")
+                            @Html.ActionLink(" Day Wise", "DayWiseTrain", "TrainDetail")
+                            @Html.ActionLink(" Train Schedule", "Index", "TrainSchedule")
+                            @Html.ActionLink(" Station Master", "Index", "stamasters")
+                        }
+
+                        @Html.ActionLink(" Logout", "Logout", "User")
+
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Login", "Login", "User")
+                    }
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <!-- End Breadcrumbs Section -->
+        <br /><br />
+        <section class="inner-page">
+        </section>
+
+    </main><!-- End #main -->
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <h3>Railway Reservation</h3>
+            <p>Pakistan Railways provides an important mode of Transportation in the farthest corners of the country and brings them closer for Business, sightseeing, pilgrimage and education.</p>
+            <p>Founded in 1861 and headquartered in Lahore, it owns 7,791 kilometres (4,841 miles) of track across Pakistan from Torkham to Karachi, offering both freight and passenger services.</p>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; Copyright <strong><span>Railway Reservation</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/ -->
+                Designed by <a href="#">Railway Authorities</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Delicious/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Delicious/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Delicious/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Delicious/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Delicious/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="~/Delicious/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Delicious/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="~/Delicious/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Delicious/assets/js/main.js"></script>
+</body>
+</html>
+
+

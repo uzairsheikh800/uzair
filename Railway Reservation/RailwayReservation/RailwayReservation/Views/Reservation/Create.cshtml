@@ -1,0 +1,124 @@
+﻿@model RailwayReservation.Models.Reservation
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Form-v3 by Colorlib</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="~/Train/css/lora-font.css">
+    <link rel="stylesheet" type="text/css" href="~/Train/css/raleway-font.css">
+    <link rel="stylesheet" type="text/css" href="~/Train/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <!-- datepicker -->
+    <link rel="stylesheet" type="text/css" href="~/Train/css/jquery-ui.min.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="~/Train/css/style.css" />
+</head>
+<body class="form-v3">
+    <div class="page-content">
+        <div class="form-v3-content">
+            @using (Html.BeginForm("Create", "Reservation", FormMethod.Post, new { @class = "form-detail", id = "myform" }))
+            {
+                <h2>Booking Tickets</h2>
+                <p class="text">Orci ac auctor augue mauris augue neque gravida in hendrerit gravida rutrum.</p>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label for="full-name">Full Name: </label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input-text", id = "full-name" } })
+
+                    </div>
+
+                </div>
+                <div class="form-group form-group-1">
+                    <div class="form-row form-row-2">
+                        <label for="person">Seat:</label>
+                        @Html.EditorFor(model => model.Seats, new { htmlAttributes = new { @class = "input-text", id = "person", size = "4" } })
+
+                    </div>
+                    <div class="form-row form-row-3">
+                        <label for="date">Journey Date:</label>
+                        @Html.EditorFor(model => model.Journey_Date, new { htmlAttributes = new { @class = "date" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group form-group-1">
+                    <div class="form-row form-row-2">
+                        <label for="person">Start Station:</label>
+                        @Html.EditorFor(model => model.Start_Station, new { htmlAttributes = new { @class = "input-text", id = "full-name" } })
+
+                    </div>
+                    <div class="form-row form-row-3">
+                        <label for="date">End Station:</label>
+                        @Html.EditorFor(model => model.End_Station, new { htmlAttributes = new { @class = "input-text", id = "full-name" } })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row form-row-6">
+                        <label for="ticket">Train Detail:</label>
+                        @Html.DropDownList("TrainDetail", null, htmlAttributes: new { @class = "input-text", id = "ticket" })
+                        <span class="select-btn">
+                            <i class="zmdi zmdi-chevron-down"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row form-row-4">
+                        <label for="ticket">TICKET TYPE:</label>
+                        @Html.DropDownList("TrainSchedule", null, htmlAttributes: new { @class = "input-text", id = "ticket" })
+
+                        <span class="select-btn">
+                            <i class="zmdi zmdi-chevron-down"></i>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-checkbox">
+                    <label class="container">
+                        <p>By booking, you agree to the <a href="/Home/Terms" class="text">Terms of Service</a></p>
+                        <input type="checkbox" name="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="form-row-last">
+                    <input type="submit" name="register" class="register" value="Reserve">
+                </div>
+            }
+
+            <div class="form-right">
+                <div class="form-images-1">
+                    <img src="~/Train/images/form-v3-1.jpg" alt="form-v3-1">
+                </div>
+                <div class="form-images-2">
+                    <img src="~/Train/images/form-v3-2.jpg" alt="form-v3-2">
+                </div>
+                <div class="form-icon-1">
+                    <a href="#"><i class="zmdi zmdi-chevron-left"></i></a>
+                </div>
+                <div class="form-icon-2">
+                    <a href="#"><i class="zmdi zmdi-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/Train/js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $("#date").datepicker({
+            dateFormat: "MM - DD - yy",
+            showOn: "both",
+            buttonText: '<i class="zmdi zmdi-calendar-alt"></i>',
+        });
+    </script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

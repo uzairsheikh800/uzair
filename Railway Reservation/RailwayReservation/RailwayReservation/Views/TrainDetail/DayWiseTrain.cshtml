@@ -1,0 +1,65 @@
+﻿@model IEnumerable<RailwayReservation.Models.TrainDetail>
+
+@{
+    ViewBag.Title = "DayWiseTrain";
+}
+@if (Session["Role"].ToString() == "Employee")
+{
+    <p>
+
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    
+}
+
+<h2>DayWiseTrain</h2>
+<br />
+
+@using (Ajax.BeginForm("DayWiseTrain", "TrainDetail", new AjaxOptions()
+{
+    HttpMethod = "post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "here",
+}))
+{
+    <label>Enter Data</label>
+    <input type="text" name="abc" />
+    <button type="submit">Search</button>
+
+}
+<div id="here">
+    <br />
+    <table class="table">
+        <tr class="thead-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.TrainName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Day)
+                </td>
+                @if (Session["Role"].ToString() == "Employee") { 
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>

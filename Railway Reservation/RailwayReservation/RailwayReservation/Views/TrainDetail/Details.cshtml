@@ -1,0 +1,90 @@
+﻿@model RailwayReservation.Models.TrainDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_of_compartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_of_compartment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C1AC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C1AC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C2AC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C2AC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C3AC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C3AC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sleeper)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sleeper)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.General)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.General)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

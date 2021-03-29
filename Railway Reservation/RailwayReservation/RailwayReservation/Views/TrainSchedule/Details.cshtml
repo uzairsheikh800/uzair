@@ -1,0 +1,66 @@
+﻿@model RailwayReservation.Models.TrainSchedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainSchedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_Station)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_Station)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination_Station)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination_Station)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arrival_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arrival_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departure_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departure_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance_Between)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance_Between)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainDetail.TrainName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainDetail.TrainName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

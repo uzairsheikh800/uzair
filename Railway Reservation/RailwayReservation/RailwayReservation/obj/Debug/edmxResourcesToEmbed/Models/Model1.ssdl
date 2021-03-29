@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RailwayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ConfirmSeat">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Journey_Date" Type="date" />
+    <Property Name="Start_Station" Type="varchar" MaxLength="50" />
+    <Property Name="End_Station" Type="varchar" MaxLength="50" />
+    <Property Name="TrainDetail" Type="int" />
+    <Property Name="TrainSchedule" Type="int" />
+    <Property Name="Seats" Type="int" />
+    <Property Name="Bill" Type="money" />
+    <Property Name="Seat_No" Type="int" />
+    <Property Name="PRN" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Journey_Date" Type="date" />
+    <Property Name="Start_Station" Type="varchar" MaxLength="50" />
+    <Property Name="End_Station" Type="varchar" MaxLength="50" />
+    <Property Name="TrainDetail" Type="int" />
+    <Property Name="TrainSchedule" Type="int" />
+    <Property Name="Seats" Type="int" />
+    <Property Name="Bill" Type="money" />
+  </EntityType>
+  <EntityType Name="stamaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="DivisionName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TrainDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrainName" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="RouteId" Type="varchar" MaxLength="50" />
+    <Property Name="No_of_compartment" Type="int" />
+    <Property Name="1AC" Type="int" />
+    <Property Name="2AC" Type="int" />
+    <Property Name="3AC" Type="int" />
+    <Property Name="Sleeper" Type="int" />
+    <Property Name="General" Type="int" />
+    <Property Name="Day" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TrainSchedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Start_Station" Type="varchar" MaxLength="50" />
+    <Property Name="Destination_Station" Type="varchar" MaxLength="50" />
+    <Property Name="Arrival_Time" Type="time" Precision="7" />
+    <Property Name="Departure_Time" Type="time" Precision="7" />
+    <Property Name="Distance_Between" Type="varchar" MaxLength="50" />
+    <Property Name="Train_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Reservati__Train__5CD6CB2B">
+    <End Role="TrainDetail" Type="Self.TrainDetail" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrainDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="TrainDetail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__Train__5DCAEF64">
+    <End Role="TrainSchedule" Type="Self.TrainSchedule" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrainSchedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="TrainSchedule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TrainSche__Train__29572725">
+    <End Role="TrainDetail" Type="Self.TrainDetail" Multiplicity="0..1" />
+    <End Role="TrainSchedule" Type="Self.TrainSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrainDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainSchedule">
+        <PropertyRef Name="Train_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RailwayModelStoreContainer">
+    <EntitySet Name="ConfirmSeat" EntityType="Self.ConfirmSeat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stamaster" EntityType="Self.stamaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrainDetail" EntityType="Self.TrainDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrainSchedule" EntityType="Self.TrainSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Reservati__Train__5CD6CB2B" Association="Self.FK__Reservati__Train__5CD6CB2B">
+      <End Role="TrainDetail" EntitySet="TrainDetail" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__Train__5DCAEF64" Association="Self.FK__Reservati__Train__5DCAEF64">
+      <End Role="TrainSchedule" EntitySet="TrainSchedule" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TrainSche__Train__29572725" Association="Self.FK__TrainSche__Train__29572725">
+      <End Role="TrainDetail" EntitySet="TrainDetail" />
+      <End Role="TrainSchedule" EntitySet="TrainSchedule" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
